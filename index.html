@@ -1,0 +1,40 @@
+
+    <!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Playlist</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>🎵 Gerador de Playlist por Humor</h1>
+
+        <select id="humor">
+            <option value="feliz">😊 Feliz</option>
+            <option value="relaxado">😌 Relaxado</option>
+            <option value="triste">😢 Triste</option>
+            <option value="motivado">💪 Motivado</option>
+            <option value="festa">🎉 Festa</option>
+        </select>
+
+        <button onclick="gerarPlaylist()">
+            Gerar Playlist
+        </button>
+
+        <div id="resultado" class="card">
+            <h2>Sua Playlist</h2>
+            <ul id="playlist">
+                <li>Escolha um humor e clique em gerar.</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
+</body>
+</html>
