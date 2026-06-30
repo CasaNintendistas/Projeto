@@ -58,7 +58,7 @@ function mudarTema(humor) {
             break;
 
         case "triste":
-            body.style.background = "linear-gradient(135deg, #434343, #000000)";
+            body.style.background = "linear-gradient(135deg, #434343, #463c3c)";
             break;
 
         case "motivado":
