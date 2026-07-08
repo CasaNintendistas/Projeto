@@ -1,143 +1,157 @@
+// ===========================
+// PLAYLISTS
+// ===========================
+
 const playlists = {
     feliz: [
-        ["Louve Samuel Messias Lukas Agustinho"],
-        ["Grato Sou FHOP Music"]
+        "Louve - Samuel Messias",
+        "Grato Sou - FHOP Music",
+        "Deus de Promessas - Davi Sacer",
+        "Me Atraiu - Morada"
     ],
 
     relaxado: [
-        ["Boa Parte FHOP Musica"],
-        ["AH Jesus/ Coração Igual Ao Teu, Jhulianny Souza"]
+        "Boa Parte - FHOP Music",
+        "Ah Jesus / Coração Igual ao Teu - Jhulianny Souza",
+        "Santo Espírito - Laura Souguellis",
+        "Ousado Amor - Isaías Saad"
     ],
 
     triste: [
-        ["Lindo Momento Jhulianny Souza"],
-        ["O Quao Lindo Esse Nome E"]
+        "Lindo Momento - Jhulianny Souza",
+        "Quão Lindo Esse Nome É",
+        "Aquieta Minh'alma - Ministério Zoe",
+        "Pai Nosso - Morada"
     ],
 
     motivado: [
-        ["Tu Es Poderoso, Gabriela Rocha"],
-        ["Grato Por Seu Amor , Get Workship"]
-        ["Novo Dia, Get Workship"]
+        "Tu És Poderoso - Gabriela Rocha",
+        "Grato por Seu Amor - Get Worship",
+        "Novo Dia - Get Worship",
+        "Eu Navegarei"
     ],
 
     festa: [
-        ["Louve, Samuel Messias "],
-        [" Algo Novo Vindo  Get Worship"]
-        [""]
+        "Louve - Samuel Messias",
+        "Algo Novo - Get Worship",
+        "Aleluia - Morada",
+        "Yeshua"
     ]
 };
 
-function gerarPlaylist() {
-    const humor = document.getElementById("humor").value;
-    const lista = document.getElementById("playlist");
+// ===========================
+// TEMAS
+// ===========================
 
-    const playlistAleatoria =
-        playlists[humor][Math.floor(Math.random() * playlists[humor].length)];
+const temas = {
+    feliz: {
+        fundo: "linear-gradient(135deg,#FFD700,#FF8C00)",
+        botao: "#FFD700",
+        texto: "#333"
+    },
+
+    relaxado: {
+        fundo: "linear-gradient(135deg,#4facfe,#00f2fe)",
+        botao: "#00bcd4",
+        texto: "#fff"
+    },
+
+    triste: {
+        fundo: "linear-gradient(135deg,#434343,#000000)",
+        botao: "#555",
+        texto: "#fff"
+    },
+
+    motivado: {
+        fundo: "linear-gradient(135deg,#ff512f,#dd2476)",
+        botao: "#ff512f",
+        texto: "#fff"
+    },
+
+    festa: {
+        fundo: "linear-gradient(135deg,#8e2de2,#4a00e0)",
+        botao: "#8e2de2",
+        texto: "#fff"
+    }
+};
+
+// ===========================
+// GERAR PLAYLIST
+// ===========================
+
+function gerarPlaylist() {
+
+    const humor = document.getElementById("humor").value;
+
+    const lista = document.getElementById("playlist");
 
     lista.innerHTML = "";
 
-    playlistAleatoria.forEach(musica => {
+    playlists[humor].forEach((musica, index) => {
+
         const item = document.createElement("li");
-        item.textContent = musica;
+
+        item.textContent = `🎵 ${musica}`;
+
+        item.style.animationDelay = `${index * 0.15}s`;
+
         lista.appendChild(item);
+
     });
 
     mudarTema(humor);
 }
 
-function mudarTema(humor) {
-    const body = document.body;
-
-    switch (humor) {
-        case "feliz":
-            body.style.background = "linear-gradient(135deg, #FFD700, #FF8C00)";
-            break;
-
-        case "relaxado":
-            body.style.background = "linear-gradient(135deg, #4facfe, #00f2fe)";
-            break;
-
-        case "triste":
-            body.style.background = "linear-gradient(135deg, #434343, #463c3c)";
-            break;
-
-        case "motivado":
-            body.style.background = "linear-gradient(135deg, #ff512f, #dd2476)";
-            break;
-
-        case "festa":
-            body.style.background = "linear-gradient(135deg, #8e2de2, #4a00e0)";
-            break;
-    }
-}
-
-window.onload = function () {
-    gerarPlaylist();
-};
+// ===========================
+// MUDAR TEMA
+// ===========================
 
 function mudarTema(humor) {
+
     const body = document.body;
+
     const container = document.querySelector(".container");
+
     const botao = document.querySelector("button");
 
-    body.style.transition = "background 0.6s ease";
-    container.style.transition = "all 0.5s ease";
-    botao.style.transition = "all 0.3s ease";
+    const tema = temas[humor];
 
-    
-    container.style.background = "rgba(255,255,255,0.15)";
-    container.style.backdropFilter = "blur(15px)";
-    container.style.borderRadius = "20px";
-    container.style.padding = "30px";
-    container.style.boxShadow = "0 15px 35px rgba(0,0,0,0.3)";
+    body.style.background = tema.fundo;
+
+    body.style.transition = ".6s";
+
+    container.style.background = "rgba(255,255,255,.12)";
+    container.style.backdropFilter = "blur(20px)";
+    container.style.borderRadius = "25px";
+    container.style.boxShadow = "0 20px 40px rgba(0,0,0,.35)";
     container.style.transform = "scale(1.02)";
+    container.style.transition = ".4s";
 
-    botao.style.border = "none";
-    botao.style.padding = "12px 20px";
-    botao.style.borderRadius = "10px";
-    botao.style.fontWeight = "bold";
-    botao.style.cursor = "pointer";
-
-    switch (humor) {
-        case "feliz":
-            body.style.background = "linear-gradient(135deg,#FFD700,#FF8C00)";
-            botao.style.background = "#FFD700";
-            botao.style.color = "#333";
-            break;
-
-        case "relaxado":
-            body.style.background = "linear-gradient(135deg,#4facfe,#00f2fe)";
-            botao.style.background = "#00c6ff";
-            botao.style.color = "white";
-            break;
-
-        case "triste":
-            body.style.background = "linear-gradient(135deg,#434343,#000000)";
-            botao.style.background = "#555";
-            botao.style.color = "white";
-            break;
-
-        case "motivado":
-            body.style.background = "linear-gradient(135deg,#ff512f,#dd2476)";
-            botao.style.background = "#ff512f";
-            botao.style.color = "white";
-            break;
-
-        case "festa":
-            body.style.background = "linear-gradient(135deg,#8e2de2,#4a00e0)";
-            botao.style.background = "#8e2de2";
-            botao.style.color = "white";
-            break;
-    }
+    botao.style.background = tema.botao;
+    botao.style.color = tema.texto;
+    botao.style.transition = ".3s";
 
     container.animate(
         [
-            { transform: "scale(0.95)", opacity: 0.8 },
-            { transform: "scale(1.02)", opacity: 1 }
+            {
+                transform: "scale(.95)",
+                opacity: .7
+            },
+
+            {
+                transform: "scale(1.02)",
+                opacity: 1
+            }
         ],
         {
             duration: 500,
-            easing: "ease"
+            easing: "ease-out"
         }
     );
+
 }
+
+
+
+
+window.addEventListener("load", gerarPlaylist);
